@@ -10,13 +10,14 @@ class Deck {
 
     fun reset() {
         cardsDeck = cards.toMutableList()
+        cardsDeck.forEach { it.isFaceUp = false }
         Collections.shuffle(cardsDeck)
     }
 
     private fun getSuit(i: Int) = when (i / 13) {
-        0 -> "clubs"
-        1 -> "diamonds"
-        2 -> "hearts"
-        else -> "spades"
+        0 -> clubs
+        1 -> diamonds
+        2 -> hearts
+        else -> spades
     }
 }

@@ -1,4 +1,4 @@
-class GameModel {
+object GameModel {
 
     val deck = Deck()
 
@@ -85,5 +85,24 @@ class GameModel {
             }
         }
         return false
+    }
+
+    fun debugPrint() {
+        var firstLine = if (wastePile.size > 0) "${wastePile.last()}" else "___"
+        firstLine = firstLine.padEnd(18)
+        foundationPiles.forEach {
+            firstLine += if (it.cards.size > 0) "${it.cards.last()}" else "___"
+            firstLine += "   "
+        }
+        println(firstLine)
+        println()
+        for (i in 0..12) {
+            var row = ""
+            tableauPiles.forEach {
+                row += if (it.cards.size > i) "${it.cards[i]}" else "   "
+                row += "   "
+            }
+            println(row)
+        }
     }
 }
